@@ -3,7 +3,9 @@
 Cross-cutting operational tooling for the **boru** libraries (formerly
 voxgig-aql): [aless](https://github.com/voxgig-boru/aless),
 [bloom-filter](https://github.com/voxgig-boru/bloom-filter),
+[cache](https://github.com/voxgig-boru/cache) (design only),
 [decision](https://github.com/voxgig-boru/decision),
+[graph](https://github.com/voxgig-boru/graph) (design only),
 [sort](https://github.com/voxgig-boru/sort),
 [stats](https://github.com/voxgig-boru/stats),
 [template](https://github.com/voxgig-boru/template),
@@ -23,31 +25,47 @@ baselines/             dated snapshots (report + raw timings)
 
 ## Prerequisites
 
-- Go toolchain (to build `aql`) and a checkout of each library under one
-  parent dir (default `~/Projects/voxgig-aql`; edit `LIBS_DIR` in the scripts
-  if yours differ).
-- An `aql` binary built from the target ref. CI parity build:
+- Go toolchain (to build `boru`) and a checkout of each library under one
+  parent dir. By default the scripts look in the directory that contains this
+  `admin` checkout; set `LIBS_DIR` otherwise.
+- A `boru` binary built from the target ref (default: `boru` on `PATH`):
   ```bash
-  cd <aql>/cmd/go
-  GOWORK=off GOFLAGS=-mod=mod go build -o /tmp/aql ./aql
+  cd <boru>/cmd/go
+  GOWORK=off GOFLAGS=-mod=mod go build -o /tmp/boru ./boru
   ```
 
 ## Usage
 
 ```bash
-AQL=/tmp/aql bash bench/verify-libs.sh    # correctness — must end "RESULT: PASS"
-AQL=/tmp/aql bash bench/bench-libs.sh     # timings
+BORU=/tmp/boru bash bench/verify-libs.sh          # correctness — must end "RESULT: PASS"
+BORU=/tmp/boru MD=1 bash bench/verify-libs.sh     # … plus a Markdown table
+BORU=/tmp/boru BASELINE=baselines/bench-2026-07-29.txt bash bench/bench-libs.sh   # timings
+BORU=/tmp/boru bash bench/verify-libs.sh sort trie   # a subset of libraries
 ```
 
-`verify-libs.sh` runs every `test/*_test.aql` / `*_spec.aql` in each lib, from
-that lib's repo root, on four surfaces and tallies any deviation:
+### One execution path (since boru 2026-09-19)
+
+boru now has **one** execution path: a program compiles to bytecode and runs
+on the VM, or it fails with `[boru/compile_failed]` — a compiler defect. The
+interpreter fallback is gone, and the `--compile`, `--force-compile` and
+`--no-compile` flags (and their `BORU_*` env vars) are retired. The old
+four-surface sweep (interpret / bytecheck / compile-parity / force-compile)
+therefore collapses to two surfaces, and "the suite runs" now *means* "the
+suite fully compiles":
 
 | surface | command | pass condition |
 |---|---|---|
-| interpret | `aql --no-compile <suite>` | exit 0 |
-| bytecheck | `aql check <suite>` | 0 errors |
-| compile-parity | `aql --compile <suite>` | output byte-identical to interpret |
-| force-compile | `aql --force-compile <suite>` | compiles fully (no refusal), exit 0 |
+| run | `boru <suite>` (from the lib root) | exit 0; assertion suites print `all green` |
+| check | `boru check <suite>` | 0 errors |
+
+A run failure is classified **COMPILE** (the emitter refused the program —
+the full-compilation gap), **CHECK** (the default pre-flight check refused it)
+or **FAIL** (it compiled and ran, but errored or an assertion failed). Each
+library's root module is also checked standalone (advisory).
+
+`bench-libs.sh` reports compiled wall time per suite (best of `RUNS`, default
+3) and, with `BASELINE=`, the ratio against an older bench file's COMPILE
+column.
 
 ## Baselines
 
