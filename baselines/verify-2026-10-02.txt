@@ -1,0 +1,152 @@
+boru: boru 0.1.0-dev (git 64c5ab2f3aed)
+libs: /home/user
+
+LIB           SUITE                      RUN      CHECK  MS      DETAIL
+---           -----                      ---      -----  --      ------
+aless         aless_app_browse_unit_test ok       ok     51604   
+aless         aless_app_unit_test        ok       ok     47109   
+aless         aless_app_watch_unit_test  ok       ok     52300   
+aless         aless_doc_prop_test        ok       ok     2029    
+aless         aless_doc_unit_test        ok       ok     1607    
+aless         aless_fmt_unit_test        ok       ok     208     
+aless         aless_nav_unit_test        ok       ok     8440    
+aless         aless_smoke_test           ok       ok     1434    
+aless         aless_tabs_unit_test       ok       ok     5631    
+aless         [module] aless-app.aql     -        ok    
+aless         [module] aless-doc.aql     -        ok    
+aless         [module] aless-fmt.aql     -        ok    
+aless         [module] aless-nav.aql     -        ok    
+aless         [module] aless-tabs.aql    -        ok    
+aless         [module] aless-view.aql    -        ok    
+aless         [module] aless.aql         -        ok    
+bloom-filter  bloom_prop_test            ok       ok     1030    
+bloom-filter  bloom_smoke_test           ok       ok     522     
+bloom-filter  bloom_unit_test            ok       ok     731     
+bloom-filter  bloom_prop_spec            ok       ok     2091    
+bloom-filter  bloom_unit_spec            ok       ok     490     
+bloom-filter  [module] bloom.aql         -        ok    
+cache         cache_prop_test            ok       ok     71      
+cache         cache_smoke_test           ok       ok     50      
+cache         cache_unit_test            ok       ok     89      
+cache         cache_prop_spec            ok       ok     70      
+cache         cache_unit_spec            ok       ok     71      
+cache         [module] cache.aql         -        ok    
+decision      decision_prop_test         ok       ok     1508    
+decision      decision_smoke_test        ok       ok     1102    
+decision      decision_unit_test         ok       ok     1173    
+decision      decision_prop_spec         ok       ok     3359    
+decision      decision_unit_spec         ok       ok     1263    
+decision      [module] decision.aql      -        ok    
+graph         graph_prop_test            ok       ok     79      
+graph         graph_smoke_test           ok       ok     53      
+graph         graph_unit_test            ok       ok     70      
+graph         graph_prop_spec            ok       ok     76      
+graph         graph_unit_spec            ok       ok     67      
+graph         [module] graph.aql         -        ok    
+sort          sort_prop_test             ok       ok     5420    
+sort          sort_smoke_test            ok       ok     4527    
+sort          sort_unit_test             ok       ok     5467    
+sort          sort_prop_spec             ok       ok     7936    
+sort          sort_unit_spec             ok       ok     3008    
+sort          [module] sort.aql          -        ok    
+stats         stats_prop_test            ok       ok     3334    
+stats         stats_smoke_test           ok       ok     2865    
+stats         stats_unit_test            ok       ok     2824    
+stats         stats_prop_spec            ok       ok     4384    
+stats         stats_unit_spec            ok       ok     3076    
+stats         [module] stats.aql         -        ok    
+template      handlebars_unit_test       ok       ok     5791    
+template      jinja_unit_test            ok       ok     5644    
+template      liquid_unit_test           ok       ok     6840    
+template      template_prop_test         ok       ok     9087    
+template      template_smoke_test        ok       ok     5182    
+template      template_unit_test         ok       ok     5794    
+template      template_prop_spec         ok       ok     41323   
+template      template_unit_spec         ok       ok     4946    
+template      [module] template.aql      -        ok    
+trie          burst_unit_test            ok       ok     2831    
+trie          radix_unit_test            ok       ok     2652    
+trie          trie_prop_test             ok       ok     3213    
+trie          trie_smoke_test            ok       ok     7833    
+trie          trie_unit_test             ok       ok     2759    
+trie          tst_unit_test              ok       ok     1633    
+trie          burst_prop_spec            ok       ok     10682   
+trie          radix_prop_spec            ok       ok     11471   
+trie          trie_prop_spec             ok       ok     9392    
+trie          trie_unit_spec             ok       ok     2649    
+trie          tst_prop_spec              ok       ok     13951   
+trie          [module] burst.aql         -        ok    
+trie          [module] radix.aql         -        ok    
+trie          [module] trie.aql          -        ok    
+trie          [module] tst.aql           -        ok    
+
+| lib | suite | run | check | ms | detail |
+|---|---|---|---|---:|---|
+| aless | aless_app_browse_unit_test | ok | ok | 51604 |  |
+| aless | aless_app_unit_test | ok | ok | 47109 |  |
+| aless | aless_app_watch_unit_test | ok | ok | 52300 |  |
+| aless | aless_doc_prop_test | ok | ok | 2029 |  |
+| aless | aless_doc_unit_test | ok | ok | 1607 |  |
+| aless | aless_fmt_unit_test | ok | ok | 208 |  |
+| aless | aless_nav_unit_test | ok | ok | 8440 |  |
+| aless | aless_smoke_test | ok | ok | 1434 |  |
+| aless | aless_tabs_unit_test | ok | ok | 5631 |  |
+| bloom-filter | bloom_prop_test | ok | ok | 1030 |  |
+| bloom-filter | bloom_smoke_test | ok | ok | 522 |  |
+| bloom-filter | bloom_unit_test | ok | ok | 731 |  |
+| bloom-filter | bloom_prop_spec | ok | ok | 2091 |  |
+| bloom-filter | bloom_unit_spec | ok | ok | 490 |  |
+| cache | cache_prop_test | ok | ok | 71 |  |
+| cache | cache_smoke_test | ok | ok | 50 |  |
+| cache | cache_unit_test | ok | ok | 89 |  |
+| cache | cache_prop_spec | ok | ok | 70 |  |
+| cache | cache_unit_spec | ok | ok | 71 |  |
+| decision | decision_prop_test | ok | ok | 1508 |  |
+| decision | decision_smoke_test | ok | ok | 1102 |  |
+| decision | decision_unit_test | ok | ok | 1173 |  |
+| decision | decision_prop_spec | ok | ok | 3359 |  |
+| decision | decision_unit_spec | ok | ok | 1263 |  |
+| graph | graph_prop_test | ok | ok | 79 |  |
+| graph | graph_smoke_test | ok | ok | 53 |  |
+| graph | graph_unit_test | ok | ok | 70 |  |
+| graph | graph_prop_spec | ok | ok | 76 |  |
+| graph | graph_unit_spec | ok | ok | 67 |  |
+| sort | sort_prop_test | ok | ok | 5420 |  |
+| sort | sort_smoke_test | ok | ok | 4527 |  |
+| sort | sort_unit_test | ok | ok | 5467 |  |
+| sort | sort_prop_spec | ok | ok | 7936 |  |
+| sort | sort_unit_spec | ok | ok | 3008 |  |
+| stats | stats_prop_test | ok | ok | 3334 |  |
+| stats | stats_smoke_test | ok | ok | 2865 |  |
+| stats | stats_unit_test | ok | ok | 2824 |  |
+| stats | stats_prop_spec | ok | ok | 4384 |  |
+| stats | stats_unit_spec | ok | ok | 3076 |  |
+| template | handlebars_unit_test | ok | ok | 5791 |  |
+| template | jinja_unit_test | ok | ok | 5644 |  |
+| template | liquid_unit_test | ok | ok | 6840 |  |
+| template | template_prop_test | ok | ok | 9087 |  |
+| template | template_smoke_test | ok | ok | 5182 |  |
+| template | template_unit_test | ok | ok | 5794 |  |
+| template | template_prop_spec | ok | ok | 41323 |  |
+| template | template_unit_spec | ok | ok | 4946 |  |
+| trie | burst_unit_test | ok | ok | 2831 |  |
+| trie | radix_unit_test | ok | ok | 2652 |  |
+| trie | trie_prop_test | ok | ok | 3213 |  |
+| trie | trie_smoke_test | ok | ok | 7833 |  |
+| trie | trie_unit_test | ok | ok | 2759 |  |
+| trie | tst_unit_test | ok | ok | 1633 |  |
+| trie | burst_prop_spec | ok | ok | 10682 |  |
+| trie | radix_prop_spec | ok | ok | 11471 |  |
+| trie | trie_prop_spec | ok | ok | 9392 |  |
+| trie | trie_unit_spec | ok | ok | 2649 |  |
+| trie | tst_prop_spec | ok | ok | 13951 |  |
+
+================ SUMMARY ================
+suites           : 58
+run pass         : 58
+compile refusals : 0   (compiler defects — the full-compilation gap)
+check refusals   : 0   (pre-flight check blocked the run)
+runtime fails    : 0
+suite check errs : 0
+modules w/ errs  : 0 / 18   (advisory)
+RESULT: PASS — every suite compiles, runs green, and checks clean.
