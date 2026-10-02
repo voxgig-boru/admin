@@ -33,7 +33,7 @@ fi
 
 now_ms() { python3 -c 'import time;print(int(time.time()*1000))'; }
 
-TOTAL=0; PASS=0; COMPILE=0; CHECKREF=0; FAILS=0; CHECKERR=0
+TOTAL=0; PASS=0; COMPILE=0; CHECKREF=0; FAILS=0; CHECKERR=0; MISSING=0
 MODERR=0; MODS=0
 ROWS=()
 
@@ -45,7 +45,9 @@ printf '%-13s %-26s %-8s %-6s %-7s %s\n' --- ----- --- ----- -- ------
 
 for lib in "${LIBS[@]}"; do
   root="$LIBS_DIR/$lib"
-  cd "$root" 2>/dev/null || { echo "$lib: MISSING ($root)"; continue; }
+  # A requested library that is not checked out is a failure, not a skip:
+  # otherwise a typo (or no checkouts at all) would report PASS on nothing.
+  cd "$root" 2>/dev/null || { echo "$lib: MISSING ($root)"; MISSING=$((MISSING+1)); continue; }
   for s in test/*_test.aql test/*_spec.aql test/*_test.boru test/*_spec.boru; do
     [ -f "$s" ] || continue
     name="$(basename "$s")"; name="${name%.*}"
@@ -53,13 +55,18 @@ for lib in "${LIBS[@]}"; do
 
     t0=$(now_ms); out="$(timeout "$TIMEOUT" "$BORU" "$s" 2>&1)"; rc=$?; t1=$(now_ms)
     detail=""
-    if [ $rc -eq 0 ]; then
+    # Match against the captured string, never `printf | grep -q`: under
+    # pipefail an early-exiting grep SIGPIPEs the writer on large output and
+    # the pipeline reports "no match" for a line that is there.
+    if [ $rc -eq 0 ] && { case "$name" in *smoke*) true;; *) [[ "$out" == *"all green"* ]];; esac; }; then
       run="ok"; PASS=$((PASS+1))
-      case "$name" in *smoke*) ;; *) printf '%s\n' "$out" | grep -q 'all green' || detail="(no 'all green')";; esac
-    elif printf '%s\n' "$out" | grep -q 'compile_failed'; then
+    elif [ $rc -eq 0 ]; then
+      # Exit 0 but an assertion-bearing suite never reached its summary.
+      run="FAIL"; FAILS=$((FAILS+1)); detail="(exit 0 but no 'all green')"
+    elif [[ "$out" == *compile_failed* ]]; then
       run="COMPILE"; COMPILE=$((COMPILE+1))
       detail="$(printf '%s\n' "$out" | grep -o 'compilation FAILED: .*' | head -1 | sed 's/ — this is a compiler defect.*//' | cut -c21-140)"
-    elif printf '%s\n' "$out" | grep -qE '^check failed|^check: [0-9]+:[0-9]+: \[error\]'; then
+    elif grep -qE '^check failed|^check: [0-9]+:[0-9]+: \[error\]' <<<"$out"; then
       run="CHECK"; CHECKREF=$((CHECKREF+1))
       detail="$(printf '%s\n' "$out" | grep -m1 -oE '\[error\] .*' | cut -c1-120)"
     else
@@ -100,7 +107,8 @@ echo "check refusals   : $CHECKREF   (pre-flight check blocked the run)"
 echo "runtime fails    : $FAILS"
 echo "suite check errs : $CHECKERR"
 echo "modules w/ errs  : $MODERR / $MODS   (advisory)"
-if [ $((TOTAL-PASS+CHECKERR)) -eq 0 ]; then
+echo "missing libs     : $MISSING"
+if [ "$TOTAL" -gt 0 ] && [ $((TOTAL-PASS+CHECKERR+MISSING)) -eq 0 ]; then
   echo "RESULT: PASS — every suite compiles, runs green, and checks clean."
 else
   echo "RESULT: ISSUES FOUND (see above)."
