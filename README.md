@@ -70,6 +70,12 @@ column.
 ## Baselines
 
 See [`baselines/`](baselines/). Latest:
-[`BASELINE-2026-07-29.md`](baselines/BASELINE-2026-07-29.md) — aql `f3b80738`,
-46 suites, **0 divergences, 0 force-compile refusals**; full compilation across
-all 7 libraries.
+[`BASELINE-2026-10-02.md`](baselines/BASELINE-2026-10-02.md) — boru `64c5ab2`
+(the single execution path), 9 libraries, 58 suites: **0 compile refusals, 0
+check errors, all green**; 3,785 of 3,874 runtime callbacks compiled (the 89
+that run on the interpreter are all property-test closures). Fixed-work suites
+run ~7× slower than on 2026-07-29 (median; a per-run check + compile cost);
+property suites run at a median 0.65× of July's speed (generator-bound).
+
+Previous: [`BASELINE-2026-07-29.md`](baselines/BASELINE-2026-07-29.md) — aql
+`f3b80738`, 7 libraries, 46 suites, 0 divergences, 0 force-compile refusals.
