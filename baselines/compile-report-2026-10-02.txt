@@ -1,0 +1,81 @@
+# boru -compile-report sweep — boru main @ 64c5ab2, 2026-10-02
+# Per suite: run exit code, 'all green' printed (smoke suites assert nothing),
+# compile_failed count, runtime callbacks stamped (compiled) and NOT stamped
+# (declined -> interpreter), and boru check errors. A suite with no runtime
+# callbacks prints 'no runtime-stamp attempts'; it is shown as stamped=0 NOTstamped=0.
+#
+# Library heads:
+#   aless f7a5f10 claude/boru-main-migration dirty=0 pushed=yes
+#   bloom-filter ed9504e claude/boru-main-migration dirty=0 pushed=yes
+#   cache 0b98f26 claude/boru-main-migration dirty=0 pushed=yes
+#   decision b8dd4e2 claude/boru-main-migration dirty=0 pushed=yes
+#   graph d1b2fc4 claude/boru-main-migration dirty=0 pushed=yes
+#   sort 4192a34 claude/boru-main-migration dirty=0 pushed=yes
+#   stats 9cc2ae0 claude/boru-main-migration dirty=0 pushed=yes
+#   template 34c5709 claude/boru-main-migration dirty=0 pushed=yes
+#   trie ea3ec3b claude/boru-main-migration dirty=0 pushed=yes
+
+aless         aless_app_browse_unit_test  rc=0 green=1 compfail=0 stamped=243  NOTstamped=0   checkerr=0
+aless         aless_app_unit_test         rc=0 green=1 compfail=0 stamped=279  NOTstamped=0   checkerr=0
+aless         aless_app_watch_unit_test   rc=0 green=1 compfail=0 stamped=243  NOTstamped=0   checkerr=0
+aless         aless_doc_prop_test         rc=0 green=1 compfail=0 stamped=24   NOTstamped=4   checkerr=0
+aless         aless_doc_unit_test         rc=0 green=1 compfail=0 stamped=24   NOTstamped=0   checkerr=0
+aless         aless_fmt_unit_test         rc=0 green=1 compfail=0 stamped=5    NOTstamped=0   checkerr=0
+aless         aless_nav_unit_test         rc=0 green=1 compfail=0 stamped=72   NOTstamped=0   checkerr=0
+aless         aless_smoke_test            rc=0 green=1 compfail=0 stamped=29   NOTstamped=0   checkerr=0
+aless         aless_tabs_unit_test        rc=0 green=1 compfail=0 stamped=116  NOTstamped=0   checkerr=0
+bloom-filter  bloom_prop_test             rc=0 green=1 compfail=0 stamped=18   NOTstamped=8   checkerr=0
+bloom-filter  bloom_smoke_test            rc=0 green=0 compfail=0 stamped=18   NOTstamped=0   checkerr=0
+bloom-filter  bloom_unit_test             rc=0 green=1 compfail=0 stamped=18   NOTstamped=0   checkerr=0
+bloom-filter  bloom_prop_spec             rc=0 green=1 compfail=0 stamped=25   NOTstamped=3   checkerr=0
+bloom-filter  bloom_unit_spec             rc=0 green=1 compfail=0 stamped=21   NOTstamped=0   checkerr=0
+cache         cache_prop_test             rc=0 green=1 compfail=0 stamped=0    NOTstamped=0   checkerr=0
+cache         cache_smoke_test            rc=0 green=0 compfail=0 stamped=0    NOTstamped=0   checkerr=0
+cache         cache_unit_test             rc=0 green=1 compfail=0 stamped=0    NOTstamped=0   checkerr=0
+cache         cache_prop_spec             rc=0 green=1 compfail=0 stamped=0    NOTstamped=0   checkerr=0
+cache         cache_unit_spec             rc=0 green=1 compfail=0 stamped=0    NOTstamped=0   checkerr=0
+decision      decision_prop_test          rc=0 green=1 compfail=0 stamped=26   NOTstamped=4   checkerr=0
+decision      decision_smoke_test         rc=0 green=0 compfail=0 stamped=26   NOTstamped=0   checkerr=0
+decision      decision_unit_test          rc=0 green=1 compfail=0 stamped=28   NOTstamped=0   checkerr=0
+decision      decision_prop_spec          rc=0 green=1 compfail=0 stamped=36   NOTstamped=7   checkerr=0
+decision      decision_unit_spec          rc=0 green=1 compfail=0 stamped=30   NOTstamped=0   checkerr=0
+graph         graph_prop_test             rc=0 green=1 compfail=0 stamped=0    NOTstamped=0   checkerr=0
+graph         graph_smoke_test            rc=0 green=0 compfail=0 stamped=0    NOTstamped=0   checkerr=0
+graph         graph_unit_test             rc=0 green=1 compfail=0 stamped=0    NOTstamped=0   checkerr=0
+graph         graph_prop_spec             rc=0 green=1 compfail=0 stamped=0    NOTstamped=0   checkerr=0
+graph         graph_unit_spec             rc=0 green=1 compfail=0 stamped=0    NOTstamped=0   checkerr=0
+sort          sort_prop_test              rc=0 green=1 compfail=0 stamped=201  NOTstamped=1   checkerr=0
+sort          sort_smoke_test             rc=0 green=0 compfail=0 stamped=59   NOTstamped=0   checkerr=0
+sort          sort_unit_test              rc=0 green=1 compfail=0 stamped=58   NOTstamped=0   checkerr=0
+sort          sort_prop_spec              rc=0 green=1 compfail=0 stamped=519  NOTstamped=0   checkerr=0
+sort          sort_unit_spec              rc=0 green=1 compfail=0 stamped=69   NOTstamped=0   checkerr=0
+stats         stats_prop_test             rc=0 green=1 compfail=0 stamped=59   NOTstamped=5   checkerr=0
+stats         stats_smoke_test            rc=0 green=0 compfail=0 stamped=59   NOTstamped=0   checkerr=0
+stats         stats_unit_test             rc=0 green=1 compfail=0 stamped=59   NOTstamped=0   checkerr=0
+stats         stats_prop_spec             rc=0 green=1 compfail=0 stamped=65   NOTstamped=6   checkerr=0
+stats         stats_unit_spec             rc=0 green=1 compfail=0 stamped=70   NOTstamped=0   checkerr=0
+template      handlebars_unit_test        rc=0 green=1 compfail=0 stamped=35   NOTstamped=0   checkerr=0
+template      jinja_unit_test             rc=0 green=1 compfail=0 stamped=39   NOTstamped=0   checkerr=0
+template      liquid_unit_test            rc=0 green=1 compfail=0 stamped=42   NOTstamped=0   checkerr=0
+template      template_prop_test          rc=0 green=1 compfail=0 stamped=35   NOTstamped=5   checkerr=0
+template      template_smoke_test         rc=0 green=0 compfail=0 stamped=38   NOTstamped=0   checkerr=0
+template      template_unit_test          rc=0 green=1 compfail=0 stamped=35   NOTstamped=0   checkerr=0
+template      template_prop_spec          rc=0 green=1 compfail=0 stamped=43   NOTstamped=5   checkerr=0
+template      template_unit_spec          rc=0 green=1 compfail=0 stamped=36   NOTstamped=0   checkerr=0
+trie          burst_unit_test             rc=0 green=1 compfail=0 stamped=55   NOTstamped=0   checkerr=0
+trie          radix_unit_test             rc=0 green=1 compfail=0 stamped=49   NOTstamped=0   checkerr=0
+trie          trie_prop_test              rc=0 green=1 compfail=0 stamped=60   NOTstamped=6   checkerr=0
+trie          trie_smoke_test             rc=0 green=0 compfail=0 stamped=206  NOTstamped=0   checkerr=0
+trie          trie_unit_test              rc=0 green=1 compfail=0 stamped=61   NOTstamped=0   checkerr=0
+trie          tst_unit_test               rc=0 green=1 compfail=0 stamped=44   NOTstamped=0   checkerr=0
+trie          burst_prop_spec             rc=0 green=1 compfail=0 stamped=122  NOTstamped=8   checkerr=0
+trie          radix_prop_spec             rc=0 green=1 compfail=0 stamped=128  NOTstamped=8   checkerr=0
+trie          trie_prop_spec              rc=0 green=1 compfail=0 stamped=71   NOTstamped=11  checkerr=0
+trie          trie_unit_spec              rc=0 green=1 compfail=0 stamped=67   NOTstamped=0   checkerr=0
+trie          tst_prop_spec               rc=0 green=1 compfail=0 stamped=120  NOTstamped=8   checkerr=0
+
+# Decline reasons (runtime callbacks that run on the interpreter):
+#        81 closure storedfn$body: unapplied fn-value in body residual (dynamic apply not lowered)
+#         6 finalize left the unit unstamped
+#         1 undef of the loop-carried def `rule` (Stage 3)
+#         1 fn storedfn$body: body result of unknown provenance
